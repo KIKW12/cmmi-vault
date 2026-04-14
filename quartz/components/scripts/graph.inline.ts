@@ -193,12 +193,59 @@ async function renderGraph(graph: HTMLElement, fullSlug: FullSlug) {
     {} as Record<(typeof cssVars)[number], string>,
   )
 
+  // CMMI tag-based color mapping
+  const cmmiTagColors: Record<string, string> = {
+    "nivel-2": "#66bb6a",
+    "nivel-3": "#42a5f5",
+    "nivel-4": "#ffa726",
+    "nivel-5": "#ef5350",
+    "meta-generica": "#da7dff",
+    "practica-generica": "#da7dff",
+    "evidencia": "#ffff45",
+    "gestión-de-procesos": "#4aa762",
+    "gestión-de-proyectos": "#2193f3",
+    "ingeniería": "#ff9800",
+    "soporte": "#ff4c6a",
+    "area-de-proceso": "#7c4dff",
+    "meta-especifica": "#536dfe",
+    "practica-especifica": "#448aff",
+    "subpractica": "#40c4ff",
+  }
+
   // calculate color
   const color = (d: NodeData) => {
     const isCurrent = d.id === slug
     if (isCurrent) {
       return computedStyleMap["--secondary"]
-    } else if (visited.has(d.id) || d.id.startsWith("tags/")) {
+    }
+
+    // Check if this is a tag node in the graph
+    if (d.id.startsWith("tags/")) {
+      const tagName = d.id.substring(5)
+      if (cmmiTagColors[tagName]) {
+        return cmmiTagColors[tagName]
+      }
+      return computedStyleMap["--tertiary"]
+    }
+
+    // Check the node's own tags for CMMI coloring
+    if (d.tags && d.tags.length > 0) {
+      // Priority order: level tags first, then category tags
+      const priorityTags = [
+        "nivel-2", "nivel-3", "nivel-4", "nivel-5",
+        "gestión-de-procesos", "gestión-de-proyectos", "ingeniería", "soporte",
+        "meta-generica", "practica-generica",
+        "area-de-proceso", "meta-especifica", "practica-especifica", "subpractica",
+        "evidencia",
+      ]
+      for (const pt of priorityTags) {
+        if (d.tags.includes(pt)) {
+          return cmmiTagColors[pt]
+        }
+      }
+    }
+
+    if (visited.has(d.id)) {
       return computedStyleMap["--tertiary"]
     } else {
       return computedStyleMap["--gray"]

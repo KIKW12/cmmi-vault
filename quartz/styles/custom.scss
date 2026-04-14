@@ -1,3 +1,309 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ============================================================================
+// CMMI-DEV v1.3 — Custom Color Scheme
+// Ported from Obsidian CSS snippet
+// ============================================================================
+
+// -- CMMI Color Variables --
+:root {
+  --cmmi-generica:    #da7dff; // Purple  - Metas Genéricas
+  --cmmi-procesos:    #4aa762; // Green   - Gestión de Procesos
+  --cmmi-proyectos:   #2193f3; // Blue    - Gestión de Proyectos
+  --cmmi-ingenieria:  #ff9800; // Orange  - Ingeniería
+  --cmmi-soporte:     #ff4c6a; // Red     - Soporte
+  --cmmi-nivel2:      #66bb6a; // Light Green
+  --cmmi-nivel3:      #42a5f5; // Light Blue
+  --cmmi-nivel4:      #ffa726; // Light Orange
+  --cmmi-nivel5:      #ef5350; // Light Red
+  --cmmi-area:        #7c4dff; // Deep Purple - Área de Proceso
+  --cmmi-me:          #536dfe; // Indigo - Meta Específica
+  --cmmi-pe:          #448aff; // Blue - Práctica Específica
+  --cmmi-sub:         #40c4ff; // Light Blue - Subpráctica
+  --cmmi-evidencia:   #ffff45; // Yellow - Evidencia
+}
+
+// ============================================================================
+// 1. TAG PILLS — Colored backgrounds per category
+// ============================================================================
+
+// Helper mixin for tag pill styling
+@mixin tag-pill($bg-color, $text-color: white) {
+  background-color: $bg-color !important;
+  color: $text-color !important;
+}
+
+// -- Category tags --
+a.internal.tag-link[href$="/tags/gestión-de-procesos"],
+a.internal.tag-link[href*="/tags/gestión-de-procesos"] {
+  @include tag-pill(var(--cmmi-procesos));
+}
+
+a.internal.tag-link[href$="/tags/gestión-de-proyectos"],
+a.internal.tag-link[href*="/tags/gestión-de-proyectos"] {
+  @include tag-pill(var(--cmmi-proyectos));
+}
+
+a.internal.tag-link[href$="/tags/ingeniería"],
+a.internal.tag-link[href*="/tags/ingeniería"] {
+  @include tag-pill(var(--cmmi-ingenieria));
+}
+
+a.internal.tag-link[href$="/tags/soporte"],
+a.internal.tag-link[href*="/tags/soporte"] {
+  @include tag-pill(var(--cmmi-soporte));
+}
+
+// -- Level tags --
+a.internal.tag-link[href$="/tags/nivel-2"],
+a.internal.tag-link[href*="/tags/nivel-2"] {
+  @include tag-pill(var(--cmmi-nivel2));
+}
+
+a.internal.tag-link[href$="/tags/nivel-3"],
+a.internal.tag-link[href*="/tags/nivel-3"] {
+  @include tag-pill(var(--cmmi-nivel3));
+}
+
+a.internal.tag-link[href$="/tags/nivel-4"],
+a.internal.tag-link[href*="/tags/nivel-4"] {
+  @include tag-pill(var(--cmmi-nivel4));
+}
+
+a.internal.tag-link[href$="/tags/nivel-5"],
+a.internal.tag-link[href*="/tags/nivel-5"] {
+  @include tag-pill(var(--cmmi-nivel5));
+}
+
+// -- Type tags --
+a.internal.tag-link[href$="/tags/area-de-proceso"],
+a.internal.tag-link[href*="/tags/area-de-proceso"] {
+  @include tag-pill(var(--cmmi-area));
+}
+
+a.internal.tag-link[href$="/tags/meta-especifica"],
+a.internal.tag-link[href*="/tags/meta-especifica"] {
+  @include tag-pill(var(--cmmi-me));
+}
+
+a.internal.tag-link[href$="/tags/practica-especifica"],
+a.internal.tag-link[href*="/tags/practica-especifica"] {
+  @include tag-pill(var(--cmmi-pe));
+}
+
+a.internal.tag-link[href$="/tags/subpractica"],
+a.internal.tag-link[href*="/tags/subpractica"] {
+  @include tag-pill(var(--cmmi-sub), #1a1a2e);
+}
+
+a.internal.tag-link[href$="/tags/meta-generica"],
+a.internal.tag-link[href*="/tags/meta-generica"],
+a.internal.tag-link[href$="/tags/practica-generica"],
+a.internal.tag-link[href*="/tags/practica-generica"] {
+  @include tag-pill(var(--cmmi-generica));
+}
+
+a.internal.tag-link[href$="/tags/evidencia"],
+a.internal.tag-link[href*="/tags/evidencia"] {
+  @include tag-pill(var(--cmmi-evidencia), #1a1a2e);
+}
+
+// -- Process area acronym tags (inherit category color) --
+// Gestión de Procesos areas
+@each $tag in "OPD", "OPF", "OPM", "OPP", "OT" {
+  a.internal.tag-link[href$="/tags/#{$tag}"],
+  a.internal.tag-link[href*="/tags/#{$tag}"] {
+    @include tag-pill(var(--cmmi-procesos));
+  }
+}
+
+// Gestión de Proyectos areas
+@each $tag in "IPM", "PMC", "PP", "QPM", "RSKM", "SAM" {
+  a.internal.tag-link[href$="/tags/#{$tag}"],
+  a.internal.tag-link[href*="/tags/#{$tag}"] {
+    @include tag-pill(var(--cmmi-proyectos));
+  }
+}
+
+// Ingeniería areas
+@each $tag in "PI", "RD", "REQM", "TS", "VAL", "VER" {
+  a.internal.tag-link[href$="/tags/#{$tag}"],
+  a.internal.tag-link[href*="/tags/#{$tag}"] {
+    @include tag-pill(var(--cmmi-ingenieria));
+  }
+}
+
+// Soporte areas
+@each $tag in "CAR", "CM", "DAR", "MA", "PPQA" {
+  a.internal.tag-link[href$="/tags/#{$tag}"],
+  a.internal.tag-link[href*="/tags/#{$tag}"] {
+    @include tag-pill(var(--cmmi-soporte));
+  }
+}
+
+// Generic goal/practice tags
+@each $tag in "GG1", "GG2", "GG3" {
+  a.internal.tag-link[href$="/tags/#{$tag}"],
+  a.internal.tag-link[href*="/tags/#{$tag}"] {
+    @include tag-pill(var(--cmmi-generica));
+  }
+}
+
+// ============================================================================
+// 2. EXPLORER FOLDERS — Colored folder names by category
+// ============================================================================
+
+// Explorer folder containers use data-folderpath attribute
+.folder-container[data-folderpath*="01---Metas-Gen"] {
+  .folder-title {
+    color: var(--cmmi-generica) !important;
+    font-weight: 600;
+  }
+}
+
+.folder-container[data-folderpath*="02---Gesti"] {
+  .folder-title {
+    color: var(--cmmi-procesos) !important;
+    font-weight: 600;
+  }
+}
+
+.folder-container[data-folderpath*="03---Gesti"] {
+  .folder-title {
+    color: var(--cmmi-proyectos) !important;
+    font-weight: 600;
+  }
+}
+
+.folder-container[data-folderpath*="04---Ingen"] {
+  .folder-title {
+    color: var(--cmmi-ingenieria) !important;
+    font-weight: 600;
+  }
+}
+
+.folder-container[data-folderpath*="05---Soporte"] {
+  .folder-title {
+    color: var(--cmmi-soporte) !important;
+    font-weight: 600;
+  }
+}
+
+// Evidencias folder
+.folder-container[data-folderpath*="06---Evidencias"] {
+  .folder-title {
+    color: var(--cmmi-evidencia) !important;
+    font-weight: 600;
+  }
+}
+
+// ============================================================================
+// 3. GRAPH VIEW — Legend styling (node colors are set in graph.inline.ts)
+// ============================================================================
+
+// Graph container enhancements
+.graph-outer {
+  border: 1px solid var(--lightgray);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+// ============================================================================
+// 4. GENERAL STYLING — Headings, tables, callouts
+// ============================================================================
+
+// -- H1 with bottom border --
+article h1 {
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 0.3em;
+  margin-bottom: 0.8em;
+}
+
+// -- H2 with lighter bottom border and top margin --
+article h2 {
+  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 0.2em;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+// -- Bold table headers --
+article table th {
+  font-weight: 700;
+  background-color: color-mix(in srgb, var(--light) 90%, var(--dark) 10%);
+}
+
+article table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    border: 1px solid var(--lightgray);
+    padding: 0.5em 0.75em;
+  }
+}
+
+// -- Callout styles for CMMI evidence types --
+
+// Plantilla (blue)
+.callout[data-callout="plantilla"] {
+  --callout-color: 33, 147, 243; // #2193f3
+  --callout-icon: "📋";
+
+  .callout-title {
+    color: rgb(var(--callout-color));
+  }
+}
+
+// Guía (green)
+.callout[data-callout="guia"],
+.callout[data-callout="guía"] {
+  --callout-color: 74, 167, 98; // #4aa762
+  --callout-icon: "📘";
+
+  .callout-title {
+    color: rgb(var(--callout-color));
+  }
+}
+
+// Proceso (orange)
+.callout[data-callout="proceso"] {
+  --callout-color: 255, 152, 0; // #ff9800
+  --callout-icon: "⚙️";
+
+  .callout-title {
+    color: rgb(var(--callout-color));
+  }
+}
+
+// Política (red)
+.callout[data-callout="politica"],
+.callout[data-callout="política"] {
+  --callout-color: 255, 76, 106; // #ff4c6a
+  --callout-icon: "📜";
+
+  .callout-title {
+    color: rgb(var(--callout-color));
+  }
+}
+
+// ============================================================================
+// 5. MISC REFINEMENTS
+// ============================================================================
+
+// Tag pills hover effect
+a.internal.tag-link {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+}
+
+// Improve tag readability in dark mode
+[saved-theme="dark"] {
+  a.internal.tag-link {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+}
