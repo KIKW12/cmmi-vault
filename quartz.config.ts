@@ -14,7 +14,7 @@ const config: QuartzConfig = {
     enablePopovers: true,
     analytics: null,
     locale: "es-ES",
-    baseUrl: "enayala.github.io/cmmi-site",
+    baseUrl: "kikw12.github.io/cmmi-vault",
     ignorePatterns: ["private", "Templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
