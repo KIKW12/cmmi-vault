@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "es-ES",
     baseUrl: "kikw12.github.io/cmmi-vault",
-    ignorePatterns: ["private", "Templates", ".obsidian"],
+    ignorePatterns: ["private", "Templates", ".obsidian", "cmmi_structure_*"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",

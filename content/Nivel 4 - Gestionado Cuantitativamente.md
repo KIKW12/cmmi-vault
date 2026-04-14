@@ -12,48 +12,24 @@ tags:
 
 ## Áreas de Proceso (Nivel 4)
 
-```dataview
-TABLE nombre AS "Área de Proceso", categoria AS "Categoría"
-FROM ""
-WHERE tipo = "area-de-proceso" AND nivel_madurez = 4
-SORT sigla ASC
-```
+| Área | Nombre | Categoría |
+|------|--------|-----------|
+| [[OPP]] | Rendimiento de Procesos de la Organización | Gestión de Procesos |
+| [[QPM]] | Gestión Cuantitativa del Proyecto | Gestión de Proyectos |
 
 ---
 
 ## Todas las Prácticas Específicas (Nivel 4)
 
-```dataview
-TABLE area_de_proceso AS "PA", meta_especifica AS "SG", estado_implementacion AS "Estado"
-FROM ""
-WHERE tipo = "practica-especifica" AND nivel_madurez = 4
-SORT area_de_proceso ASC, numero ASC
-```
+### OPP — Rendimiento de Procesos de la Organización
+- [[OPP SG 1 - Establecer las líneas base y los modelos de rendimiento]]
+
+### QPM — Gestión Cuantitativa del Proyecto
+- [[QPM SG 1 - Preparar la gestión cuantitativa]]
+- [[QPM SG 2 - Gestionar el proyecto cuantitativamente]]
 
 ---
 
 ## Subprácticas por Estado de Implementación
 
-### Pendientes
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 4 AND estado_implementacion = "pendiente"
-SORT area_de_proceso ASC, practica_especifica ASC, numero ASC
-```
-
-### En Proceso
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 4 AND estado_implementacion = "en proceso"
-SORT area_de_proceso ASC
-```
-
-### Completadas
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 4 AND estado_implementacion = "completo"
-SORT area_de_proceso ASC
-```
+Ver cada área de proceso para el detalle de subprácticas.

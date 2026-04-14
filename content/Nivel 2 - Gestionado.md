@@ -12,59 +12,57 @@ tags:
 
 ## Áreas de Proceso (Nivel 2)
 
-```dataview
-TABLE nombre AS "Área de Proceso", categoria AS "Categoría"
-FROM ""
-WHERE tipo = "area-de-proceso" AND nivel_madurez = 2
-SORT sigla ASC
-```
+| Área | Nombre | Categoría |
+|------|--------|-----------|
+| [[CM]] | Gestión de Configuración | Soporte |
+| [[MA]] | Medición y Análisis | Soporte |
+| [[PMC]] | Monitorización y Control del Proyecto | Gestión de Proyectos |
+| [[PP]] | Planificación del Proyecto | Gestión de Proyectos |
+| [[PPQA]] | Aseguramiento de la Calidad del Proceso y del Producto | Soporte |
+| [[REQM]] | Gestión de Requisitos | Ingeniería |
+| [[SAM]] | Gestión de Acuerdos con Proveedores | Gestión de Proyectos |
 
 ---
 
 ## Todas las Prácticas Específicas (Nivel 2)
 
-```dataview
-TABLE area_de_proceso AS "PA", meta_especifica AS "SG", estado_implementacion AS "Estado"
-FROM ""
-WHERE tipo = "practica-especifica" AND nivel_madurez = 2
-SORT area_de_proceso ASC, numero ASC
-```
+### CM — Gestión de Configuración
+- [[CM SG 1 - Establecer las líneas base]]
+- [[CM SG 2 - Seguir y controlar los cambios]]
+- [[CM SG 3 - Establecer la integridad]]
+
+### MA — Medición y Análisis
+- [[MA SG 1 - Alinear las actividades de medición y análisis]]
+- [[MA SG 2 - Proporcionar los resultados de la medición]]
+
+### PMC — Monitorización y Control del Proyecto
+- [[PMC SG 1 - Monitorizar el proyecto frente al plan]]
+- [[PMC SG 2 - Gestionar las acciones correctivas hasta su cierre]]
+
+### PP — Planificación del Proyecto
+- [[PP SG 1 - Establecer las estimaciones]]
+- [[PP SG 2 - Desarrollar un plan de proyecto]]
+- [[PP SG 3 - Obtener el compromiso con el plan]]
+
+### PPQA — Aseguramiento de la Calidad del Proceso y del Producto
+- [[PPQA SG 1 - Evaluar objetivamente los procesos y los productos de trabajo]]
+- [[PPQA SG 2 - Proporcionar una visión objetiva]]
+
+### REQM — Gestión de Requisitos
+- [[REQM SG 1 - Gestionar los requisitos]]
+
+### SAM — Gestión de Acuerdos con Proveedores
+- [[SAM SG 1 - Establecer acuerdos con proveedores]]
+- [[SAM SG 2 - Satisfacer los acuerdos con los proveedores]]
 
 ---
 
 ## Subprácticas por Estado de Implementación
 
-### Pendientes
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 2 AND estado_implementacion = "pendiente"
-SORT area_de_proceso ASC, practica_especifica ASC, numero ASC
-```
-
-### En Proceso
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 2 AND estado_implementacion = "en proceso"
-SORT area_de_proceso ASC
-```
-
-### Completadas
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 2 AND estado_implementacion = "completo"
-SORT area_de_proceso ASC
-```
+Ver cada área de proceso para el detalle de subprácticas.
 
 ---
 
 ## Evidencias Mapeadas a Nivel 2
 
-```dataview
-TABLE tipo AS "Tipo", file.folder AS "Carpeta"
-FROM "06 - Evidencias"
-WHERE contains(file.outlinks, [[CM]]) OR contains(file.outlinks, [[MA]]) OR contains(file.outlinks, [[PMC]]) OR contains(file.outlinks, [[PP]]) OR contains(file.outlinks, [[PPQA]]) OR contains(file.outlinks, [[REQM]]) OR contains(file.outlinks, [[SAM]])
-SORT categoria ASC
-```
+Ver [[Índice de Evidencias]] para el mapeo completo de evidencias.

@@ -12,48 +12,26 @@ tags:
 
 ## Áreas de Proceso (Nivel 5)
 
-```dataview
-TABLE nombre AS "Área de Proceso", categoria AS "Categoría"
-FROM ""
-WHERE tipo = "area-de-proceso" AND nivel_madurez = 5
-SORT sigla ASC
-```
+| Área | Nombre | Categoría |
+|------|--------|-----------|
+| [[CAR]] | Análisis Causal y Resolución | Soporte |
+| [[OPM]] | Gestión del Rendimiento de la Organización | Gestión de Procesos |
 
 ---
 
 ## Todas las Prácticas Específicas (Nivel 5)
 
-```dataview
-TABLE area_de_proceso AS "PA", meta_especifica AS "SG", estado_implementacion AS "Estado"
-FROM ""
-WHERE tipo = "practica-especifica" AND nivel_madurez = 5
-SORT area_de_proceso ASC, numero ASC
-```
+### CAR — Análisis Causal y Resolución
+- [[CAR SG 1 - Determinar las causas de los resultados seleccionados]]
+- [[CAR SG 2 - Tratar las causas de los resultados seleccionados]]
+
+### OPM — Gestión del Rendimiento de la Organización
+- [[OPM SG 1 - Gestionar el rendimiento de negocio]]
+- [[OPM SG 2 - Seleccionar las mejoras]]
+- [[OPM SG 3 - Desplegar las mejoras]]
 
 ---
 
 ## Subprácticas por Estado de Implementación
 
-### Pendientes
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 5 AND estado_implementacion = "pendiente"
-SORT area_de_proceso ASC, practica_especifica ASC, numero ASC
-```
-
-### En Proceso
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 5 AND estado_implementacion = "en proceso"
-SORT area_de_proceso ASC
-```
-
-### Completadas
-```dataview
-TABLE area_de_proceso AS "PA", practica_especifica AS "SP"
-FROM ""
-WHERE tipo = "subpractica" AND nivel_madurez = 5 AND estado_implementacion = "completo"
-SORT area_de_proceso ASC
-```
+Ver cada área de proceso para el detalle de subprácticas.
